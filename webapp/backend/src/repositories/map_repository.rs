@@ -100,12 +100,10 @@ impl MapRepository for MapRepositoryImpl {
         node_b_id: i32,
         weight: i32,
     ) -> Result<(), sqlx::Error> {
-        sqlx::query("UPDATE edges SET weight = ? WHERE (node_a_id = ? AND node_b_id = ?) OR (node_a_id = ? AND node_b_id = ?)")
+        sqlx::query("UPDATE edges SET weight = ? WHERE (node_a_id = ? AND node_b_id = ?)")
             .bind(weight)
             .bind(node_a_id)
             .bind(node_b_id)
-            .bind(node_b_id)
-            .bind(node_a_id)
             .execute(&self.pool)
             .await?;
 
