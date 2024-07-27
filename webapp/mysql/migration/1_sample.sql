@@ -1,0 +1,7 @@
+ALTER TABLE dispatchers
+ADD CONSTRAINT user_id
+FOREIGN KEY (user_id) REFERENCES user(id) ON DELETE CASCADE;
+
+ALTER TABLE dispatchers
+ADD CONSTRAINT area_id
+FOREIGN KEY (area_id) REFERENCES area(id);
